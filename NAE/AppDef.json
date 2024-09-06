@@ -8,7 +8,7 @@
         "Middle Earth"
     ],
     "machines": [
-        "*"
+        "n0*"
     ],
     "vault-types": [
         "FILE",
