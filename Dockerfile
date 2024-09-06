@@ -25,7 +25,7 @@ RUN cp ffmpeg-*/ffmpeg /usr/bin/ffmpeg;
 
 
 # Create final image from Ubuntu
-FROM ubuntu:latest
+FROM ubuntu:noble
 
 # Install Nimbix desktop environment and gimp
 RUN apt-get -y update && \
