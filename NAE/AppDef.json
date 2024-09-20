@@ -1,8 +1,8 @@
 {
     "name": "The Mega App",
     "description": "An app to test them all",
-    "author": "",
-    "licensed": true,
+    "author": "Benoit Leveugle",
+    "licensed": false,
     "appdefversion": 2,
     "classifications": [
         "Middle Earth"
