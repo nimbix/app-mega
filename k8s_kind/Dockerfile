@@ -1,9 +1,10 @@
 # Load jarvice_mpi image as JARVICE_MPI
-FROM us-docker.pkg.dev/jarvice/images/jarvice_mpi:4.1 as JARVICE_MPI
+ARG JMPI_VERSION=4.1.6
+FROM us-docker.pkg.dev/jarvice/images/jarvice_mpi:$JMPI_VERSION as JARVICE_MPI
 
 # Multistage to optimise, as image does not need to contain jarvice_mpi 
 # components, these are side loaded during job containers init.
-FROM ubuntu:22.04 as buffer_mpi
+FROM ubuntu:24.04 as buffer_mpi
 # Grab jarvice_mpi from JARVICE_MPI
 COPY --from=JARVICE_MPI /opt/JARVICE /opt/JARVICE
 # Install needed dependencies to download and build Intel MPI Benchmark
@@ -17,15 +18,14 @@ RUN bash -c 'wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-b
     ./configure CC=mpicc CXX=mpicxx --prefix=/osu/; make && make install;'
 
 # Grab ffmpeg
-FROM ubuntu:22.04 AS download_extract_ffmpeg
+FROM ubuntu:24.04 AS download_extract_ffmpeg
 RUN apt-get update; DEBIAN_FRONTEND=noninteractive apt-get install tar xz-utils wget -y;
 RUN wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz;
 RUN tar xvJf ffmpeg-release-amd64-static.tar.xz;
 RUN cp ffmpeg-*/ffmpeg /usr/bin/ffmpeg;
 
-
 # Create final image from Ubuntu
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # Install Nimbix desktop environment and gimp
 RUN apt-get -y update && \
