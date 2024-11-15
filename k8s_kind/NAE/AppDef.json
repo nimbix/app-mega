@@ -177,8 +177,24 @@
                     "value": "/data/output.mkv",
                     "positional": true,
                     "required": true
+                },
+                "p6": {
+                    "name": "p6",
+                    "description": "p6",
+                    "type": "CONST",
+                    "value": "-n",
+                    "positional": true,
+                    "required": true
                 }
             }
+        },
+        "delete_converted_video": {
+            "path": "/myscript.sh",
+            "interactive": false,
+            "name": "Delete converted video",
+            "description": "Delete /data/output.mkv",
+            "cmdscript": "#!/bin/sh\nset -o pipefail\ntest -f /data/output.mkv && rm -f /data/output.mkv || exit 1",
+            "parameters": {}
         },
         "Script_base64": {
             "path": "/myscript.sh",
