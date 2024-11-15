@@ -193,7 +193,7 @@
             "interactive": false,
             "name": "Delete converted video",
             "description": "Delete /data/output.mkv",
-            "cmdscript": "#!/bin/sh\nset -o pipefail\ntest -f /data/output.mkv && rm -f /data/output.mkv || exit 1",
+            "cmdscript": "#!/bin/bash\nset -o pipefail\ntest -f /data/output.mkv && rm -f /data/output.mkv || exit 1",
             "parameters": {}
         },
         "Script_base64": {
