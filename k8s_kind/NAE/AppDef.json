@@ -132,6 +132,54 @@
             "cmdscript": "#!/bin/sh\necho I love pizza\necho $(ps -ax)",
             "parameters": {}
         },
+        "convert_video": {
+            "path": "/usr/bin/ffmpeg",
+            "interactive": false,
+            "name": "Convert video",
+            "description": "Convert a video in /data/input.mkv to /data/output.mkv",
+            "parameters": {
+                "p1": {
+                    "name": "p1",
+                    "description": "p1",
+                    "type": "CONST",
+                    "value": "-i",
+                    "positional": true,
+                    "required": true
+                },
+                "p2": {
+                    "name": "p2",
+                    "description": "p2",
+                    "type": "CONST",
+                    "value": "/data/input.mkv",
+                    "positional": true,
+                    "required": true
+                },
+                "p3": {
+                    "name": "p3",
+                    "description": "p3",
+                    "type": "CONST",
+                    "value": "-vcodec",
+                    "positional": true,
+                    "required": true
+                },
+                "p4": {
+                    "name": "p4",
+                    "description": "p4",
+                    "type": "CONST",
+                    "value": "libx264",
+                    "positional": true,
+                    "required": true
+                },
+                "p5": {
+                    "name": "p5",
+                    "description": "p5",
+                    "type": "CONST",
+                    "value": "/data/output.mkv",
+                    "positional": true,
+                    "required": true
+                }
+            }
+        },
         "Script_base64": {
             "path": "/myscript.sh",
             "interactive": false,
