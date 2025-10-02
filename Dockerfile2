@@ -1,0 +1,6 @@
+FROM docker.io/oxedions/u20:latest
+
+# Integrate AppDef file
+COPY NAE/help.html /etc/NAE/help.html
+
+RUN mkdir -p /etc/NAE && touch /etc/NAE/AppDef.json

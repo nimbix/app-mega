@@ -18,6 +18,66 @@
         "OBJECT"
     ],
     "commands": {
+        "validation": {
+            "path": "/launch.sh",
+            "interactive": false,
+            "publicip": false,
+            "name": "Validation",
+            "description": "Launch a cluster validation process",
+            "verboseinit": true,
+            "parameters": {
+                "-APIURL": {
+                    "name": "-APIURL",
+                    "description": "APIURL",
+                    "type": "CONST",
+                    "value": "%APIURL%",
+                    "positional": false,
+                    "required": true
+                },
+                "-APIUSER": {
+                    "name": "-APIUSER",
+                    "description": "APIUSER",
+                    "type": "CONST",
+                    "value": "%APIUSER%",
+                    "positional": false,
+                    "required": true
+                },
+                "-APIKEY": {
+                    "name": "-APIKEY",
+                    "description": "APIKEY",
+                    "type": "CONST",
+                    "value": "%APIKEY%",
+                    "positional": false,
+                    "required": true
+                },
+                "-VAULT": {
+                    "name": "-VAULT",
+                    "description": "VAULT",
+                    "type": "CONST",
+                    "value": "%VNAME%",
+                    "positional": false,
+                    "required": true
+                },
+                "appname": {
+                    "name": "Application name",
+                    "description": "Exact name of the application registered in P2C",
+                    "type": "STR",
+                    "value": "megaappv2",
+                    "positional": true,
+                    "variable": false,
+                    "required": true
+                },
+		"machine": {
+                    "name": "Machine",
+                    "description": "Target machine kind to be used for validation",
+                    "type": "STR",
+                    "value": "n0",
+                    "positional": true,
+                    "variable": false,
+                    "required": true
+                }
+            }
+        },
         "custom": {
             "path": "/usr/bin/echo",
             "interactive": false,

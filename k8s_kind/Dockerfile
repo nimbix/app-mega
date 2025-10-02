@@ -29,7 +29,7 @@ FROM ubuntu:24.04
 
 # Install Nimbix desktop environment and gimp
 RUN apt-get -y update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install ca-certificates curl wget software-properties-common gimp --no-install-recommends && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install ca-certificates curl wget software-properties-common gimp jq --no-install-recommends && \
     curl -H 'Cache-Control: no-cache' \
         https://raw.githubusercontent.com/nimbix/jarvice-desktop/master/install-nimbix.sh \
         | bash
@@ -39,6 +39,9 @@ COPY --from=download_extract_ffmpeg /usr/bin/ffmpeg /usr/bin/ffmpeg
 COPY --from=buffer_mpi /mpi-benchmarks/IMB-MPI1 /IMB-MPI1
 COPY --from=buffer_mpi /osu/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw /osu_bw
 COPY --from=buffer_mpi /osu/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency /osu_latency
+
+# Integrate validation script
+COPY launch.sh /launch.sh
 
 # Integrate AppDef file
 COPY NAE/AppDef.json /etc/NAE/AppDef.json
